@@ -9,6 +9,7 @@ class Solution {
         for(int i=0;i<l.size()-1;i++){
             res = Math.min(res, l.get(i+1)-l.get(i));
         }
+        res = Math.min(res, 24*60-l.get(l.size()-1)+l.get(0));
         return res;
     }
     public void covert(String tp){
@@ -16,7 +17,6 @@ class Solution {
         int m = (tp.charAt(3)-'0')*10 + (tp.charAt(4)-'0');
         int t = (h-1)*60 + m;
         l.add(t);
-        l.add(t+24*60);
     }
 
 }
