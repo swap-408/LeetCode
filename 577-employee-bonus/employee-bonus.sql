@@ -3,4 +3,4 @@ select name, bonus
 from employee
 left join bonus
 using(empId)
-where bonus.bonus <1000 or bonus is null
+where bonus.bonus <1000 or bonus.bonus is null
