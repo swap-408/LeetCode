@@ -4,15 +4,14 @@ class Solution:
         asum = 0
         hp = []
         res = 0
-        for i in range(len(arr)):
-            curr = arr[i]
-            asum += curr[1]
+        for n1,n2 in arr:
+            
+            asum += n2
             if len(hp)==(k-1):
-                res = max(res,curr[0]*asum)
-            heapq.heappush(hp,curr[1])
+                res = max(res,n1*asum)
+            heapq.heappush(hp,n2)
             if len(hp)==k:
-                asum -= hp[0]
-                heapq.heappop(hp)
+                asum -= heapq.heappop(hp)
         return res
             
 
