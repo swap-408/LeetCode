@@ -12,6 +12,10 @@ class Solution:
             if not node:
                 res[1] = 0
                 return res
+            if not node.left and not node.right:
+                res[0] = 1
+                res[2] = 0
+                return res
             
             
             left = dfs(node.left)
