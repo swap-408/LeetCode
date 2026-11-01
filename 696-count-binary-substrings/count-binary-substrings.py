@@ -1,12 +1,14 @@
 class Solution:
     def countBinarySubstrings(self, s: str) -> int:
-        group = [1]
+        curr = 1
+        prev = 0
+        res = 0
         for i in range(1,len(s)):
             if s[i]==s[i-1]:
-                group[-1] +=1
+                curr += 1
             else:
-                group.append(1)
-        res = 0
-        for i in range(1,len(group)):
-            res += min(group[i],group[i-1])
+                res += min(prev,curr)
+                prev =curr
+                curr = 1
+        res += min(curr,prev)
         return res
