@@ -1,15 +1,13 @@
 class Solution:
     def findTargetSumWays(self, nums: list[int], target: int) -> int:
-        @cache
-        def recurse(i,csum):
-            if i==len(nums):
-                if csum==target: return 1
-                else: return 0
-            
-            res = 0
-            res += recurse(i+1,csum+nums[i])
-            res += recurse(i+1,csum-nums[i])
-
-            return res
-
-        return recurse(0,0)
+        
+        total = sum(nums)
+        if abs(target)>total or (total+target)%2!=0:
+            return 0
+        P = (target+total)//2
+        dp = [0]*(P+1)
+        dp[0] = 1
+        for num in nums:
+            for j in range(P,num-1,-1):
+                dp[j] += dp[j-num]
+        return dp[P]
