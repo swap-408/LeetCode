@@ -9,4 +9,4 @@ class Solution:
         for num in nums:
             for j in range(half,num-1,-1):
                 dp[j] += dp[j-num]
-        return True if dp[half]>1 else False
+        return True if dp[half]>=1 else False
